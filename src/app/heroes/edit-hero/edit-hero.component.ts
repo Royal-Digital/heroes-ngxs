@@ -8,13 +8,14 @@ import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { GetHeroById, UpdateHero } from "../hero.action";
 import { HeroState } from "../hero.state";
+import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: "app-edit-hero",
   templateUrl: "./edit-hero.component.html",
   styleUrls: ["./edit-hero.component.css"]
 })
-export class EditHeroComponent implements OnInit, OnDestroy {
+export class EditHeroComponent implements OnInit, OnDestroy, AfterViewInit {
   @Select(HeroState.getSelectedHero)
   hero: Observable<Hero>;
 
@@ -36,6 +37,14 @@ export class EditHeroComponent implements OnInit, OnDestroy {
     this.formBuilderInit();
   }
 
+  patchHero() {
+    this.hero.subscribe((data) => {
+      console.log(data);
+      this.heroForm.patchValue(data);
+    })
+  }
+
+
   ngOnDestroy(): void {
     // this.sub.unsubscribe();
   }
@@ -52,7 +61,9 @@ export class EditHeroComponent implements OnInit, OnDestroy {
 
   private getHero(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
-    this.store.dispatch(new GetHeroById(this.id));
+    this.store.dispatch(new GetHeroById(this.id)).subscribe((data) => {
+       this.patchHero();
+    });
   }
 
   private putHero() {
