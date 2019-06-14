@@ -15,7 +15,8 @@ import { HeroState } from "../hero.state";
   styleUrls: ["./edit-hero.component.css"]
 })
 export class EditHeroComponent implements OnInit, OnDestroy {
-  hero: any;
+  @Select(HeroState.getSelectedHero)
+  hero: Observable<Hero>;
 
   heroForm: FormGroup;
   id: string;
@@ -28,9 +29,7 @@ export class EditHeroComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private location: Location
-  ) {
-    this.hero = this.store.select(state => state.heroes.hero);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getHero();
