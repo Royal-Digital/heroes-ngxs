@@ -7,14 +7,15 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { HeroService } from "./heroes/hero.service";
 import { NgxsModule } from "@ngxs/store";
-import { HeroState } from "./states/hero.state";
+import { HeroState } from "./heroes/hero.state";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { environment } from "../environments/environment";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HeaderNavComponent } from "./shared/components/header-nav.component";
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderNavComponent],
   imports: [
     BrowserAnimationsModule,
     AppRoutingModule,
