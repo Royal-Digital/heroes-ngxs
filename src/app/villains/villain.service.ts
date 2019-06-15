@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Villain } from "./Villain.model";
+import { Villain } from "./villain.model";
 import { Observable, throwError } from "rxjs";
 import { BaseUrl } from "../shared/api.config";
 import { catchError } from "rxjs/operators";
@@ -25,7 +25,7 @@ export class VillainService {
       );
   }
 
-  addVillain(villain: Villain): Observable<any> {
+  addVillain(villain: Villain): Observable<Villain> {
     return this.http.post<Villain>(`${BaseUrl.villain}`, villain).pipe(
       catchError((err: HttpErrorResponse) => {
         return throwError(new Error(err.message));
@@ -33,7 +33,7 @@ export class VillainService {
     );
   }
 
-  updateVillain(villain: Villain): Observable<any> {
+  updateVillain(villain: Villain): Observable<Villain> {
     return this.http
       .put<Villain>(`${BaseUrl.villain}${villain.id}`, villain)
       .pipe(
@@ -43,7 +43,7 @@ export class VillainService {
       );
   }
 
-  removeVillain(id: string): Observable<any> {
+  removeVillain(id: string): Observable<Villain> {
     return this.http.delete<Villain>(`${BaseUrl.villain}${id}`).pipe(
       catchError((err: HttpErrorResponse) => {
         return throwError(new Error(err.message));

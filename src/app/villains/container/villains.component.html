@@ -6,10 +6,6 @@
     (handleCancelForm)="cancelForm()"
     (handleShowNewItemForm)="showNewItemForm()"
   ></app-new-item-form>
-  <div class="text-center">
-    <strong>Values to be sent: </strong
-    ><span>{{ newItemForm.value | json }}</span>
-  </div>
   <app-item-list
     [editItemUrl]="editItemUrl"
     [list$]="list$"

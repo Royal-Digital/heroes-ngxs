@@ -28,6 +28,8 @@ export class VillainsComponent implements OnInit {
 
   onSubmit() {
     this.store.dispatch(new AddVillain(this.newItemForm.value));
+    this.newItemForm.reset();
+    this.isShowNewItemForm = !this.isShowNewItemForm;
   }
 
   showNewItemForm() {

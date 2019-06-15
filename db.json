@@ -1,25 +1,11 @@
 {
   "heroes": [
     {
-      "id": "156B1BBE-1F70-2461-9088-6B7F50AE22CE",
-      "firstName": "Taddy",
-      "lastName": "Clemons",
-      "house": "Costa Rica",
-      "knownAs": "Sem Institute"
-    },
-    {
       "id": "D246031C-F844-AC41-7C02-9D553FC59082",
       "firstName": "Emerald",
       "lastName": "Morrow",
       "house": "Suriname",
       "knownAs": "Lorem Lorem Luctus Industries"
-    },
-    {
-      "id": "7E2F8E35-412F-1F42-816C-0C2BA0F56B9F",
-      "firstName": "Sandra",
-      "lastName": "Kemp",
-      "house": "Marshall Islands",
-      "knownAs": "Facilisis LLP"
     },
     {
       "id": "837BF771-0192-3FDA-F078-E6E8A06795DB",
@@ -601,6 +587,13 @@
       "lastName": "Todd",
       "house": "Saint Kitts and Nevis",
       "knownAs": "Aliquet Limited"
+    },
+    {
+      "firstName": "Hu",
+      "lastName": "Ra",
+      "house": "none",
+      "knownAs": "none",
+      "id": "4W-4t6b"
     }
   ],
   "villains": [
@@ -1294,6 +1287,13 @@
       "firstName": "Check",
       "lastName": "Char",
       "id": "PaAgAmP"
+    },
+    {
+      "firstName": "Choco",
+      "lastName": "Bomb",
+      "house": "none",
+      "knownAs": "none",
+      "id": "9XDom6a"
     }
   ]
 }

@@ -8,7 +8,9 @@ import {
   GetVillains,
   UpdateVillain
 } from "./villain.action";
-import { tap } from "rxjs/operators";
+import { catchError, tap } from "rxjs/operators";
+import { HttpErrorResponse } from "@angular/common/http";
+import { throwError } from "rxjs";
 
 export class VillainStateModel {
   villains: Villain[];
@@ -44,6 +46,10 @@ export class VillainState {
           ...state,
           villains: response
         });
+      }),
+      catchError((err: HttpErrorResponse) => {
+        alert("Something happened. Please try again.");
+        return throwError(new Error(err.message));
       })
     );
   }
@@ -60,6 +66,10 @@ export class VillainState {
           ...state,
           villain: response
         });
+      }),
+      catchError((err: HttpErrorResponse) => {
+        alert("Something happened. Please try again.");
+        return throwError(new Error(err.message));
       })
     );
   }
@@ -75,6 +85,10 @@ export class VillainState {
         patchState({
           villains: [...state.villains, response]
         });
+      }),
+      catchError((err: HttpErrorResponse) => {
+        alert("Something happened. Please try again.");
+        return throwError(new Error(err.message));
       })
     );
   }
@@ -84,16 +98,25 @@ export class VillainState {
     { getState, setState }: StateContext<VillainStateModel>,
     { payload }: UpdateVillain
   ) {
+    // Optimistic update
+    const previousState = getState();
+    const state = getState();
+    const villains = [...state.villains];
+    const index = villains.findIndex(item => item.id === payload.id);
+    villains[index] = payload;
+    debugger;
+    setState({
+      ...state,
+      villains
+    });
     return this.villainService.updateVillain(payload).pipe(
-      tap(response => {
-        const state = getState();
-        const villains = [...state.villains];
-        const index = villains.findIndex(item => item.id === payload.id);
-        villains[index] = response;
+      catchError((err: HttpErrorResponse) => {
+        alert("Something happened. Please try again.");
         setState({
           ...state,
-          villains
+          villains: previousState.villains
         });
+        return throwError(new Error(err.message));
       })
     );
   }
@@ -103,14 +126,22 @@ export class VillainState {
     { getState, setState }: StateContext<VillainStateModel>,
     { id }: DeleteVillain
   ) {
+    // Optimistic update
+    const previousState = getState();
+    const state = getState();
+    const filteredArray = state.villains.filter(h => h.id !== id);
+    setState({
+      ...state,
+      villains: filteredArray
+    });
     return this.villainService.removeVillain(id).pipe(
-      tap(() => {
-        const state = getState();
-        const filteredArray = state.villains.filter(h => h.id !== id);
+      catchError((err: HttpErrorResponse) => {
+        alert("Something happened. Please try again.");
         setState({
           ...state,
-          villains: filteredArray
+          villains: previousState.villains
         });
+        return throwError(new Error(err.message));
       })
     );
   }
