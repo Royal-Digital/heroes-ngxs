@@ -8,14 +8,13 @@ import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { GetHeroById, UpdateHero } from "../hero.action";
 import { HeroState } from "../hero.state";
-import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: "app-edit-hero",
   templateUrl: "./edit-hero.component.html",
   styleUrls: ["./edit-hero.component.css"]
 })
-export class EditHeroComponent implements OnInit, OnDestroy, AfterViewInit {
+export class EditHeroComponent implements OnInit, OnDestroy {
   @Select(HeroState.getSelectedHero)
   hero: Observable<Hero>;
 
@@ -37,16 +36,8 @@ export class EditHeroComponent implements OnInit, OnDestroy, AfterViewInit {
     this.formBuilderInit();
   }
 
-  patchHero() {
-    this.hero.subscribe((data) => {
-      console.log(data);
-      this.heroForm.patchValue(data);
-    })
-  }
-
-
   ngOnDestroy(): void {
-    // this.sub.unsubscribe();
+    this.sub.unsubscribe();
   }
 
   onSubmit() {
@@ -61,15 +52,19 @@ export class EditHeroComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private getHero(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
-    this.store.dispatch(new GetHeroById(this.id)).subscribe((data) => {
-       this.patchHero();
+    this.sub = this.store.dispatch(new GetHeroById(this.id)).subscribe(data => {
+      this.patchHero();
     });
   }
 
-  private putHero() {
-    this.store
-      .dispatch(new UpdateHero(this.heroForm.value, this.heroForm.value.id))
-      .subscribe();
+  private patchHero(): void {
+    this.sub = this.hero.subscribe(data => {
+      this.heroForm.patchValue(data);
+    });
+  }
+
+  private putHero(): void {
+    this.store.dispatch(new UpdateHero(this.heroForm.value)).subscribe();
   }
 
   private formBuilderInit(): void {

@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: "./heroes/heroes.module#HeroesModule"
   },
   {
+    path: "villains",
+    loadChildren: "./villains/villains.module#VillainsModule"
+  },
+  {
     path: "**",
     redirectTo: ""
   }

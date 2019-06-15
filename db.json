@@ -1,15 +1,8 @@
 {
   "heroes": [
     {
-      "id": "1BA234A3-E164-E67F-3AC0-C566F45AD141",
-      "firstName": "Silas",
-      "lastName": "Lloyd",
-      "house": "Sweden",
-      "knownAs": "Sem Egestas Blandit Ltd"
-    },
-    {
       "id": "156B1BBE-1F70-2461-9088-6B7F50AE22CE",
-      "firstName": "Tad",
+      "firstName": "Taddy",
       "lastName": "Clemons",
       "house": "Costa Rica",
       "knownAs": "Sem Institute"
@@ -608,26 +601,12 @@
       "lastName": "Todd",
       "house": "Saint Kitts and Nevis",
       "knownAs": "Aliquet Limited"
-    },
-    {
-      "id": "301D4A22-A0BB-4690-186F-991ADA361831",
-      "firstName": "Hunter",
-      "lastName": "Hood",
-      "house": "Iran",
-      "knownAs": "Nulla Integer Urna Limited"
     }
   ],
   "villains": [
     {
-      "id": "1D991F17-2F7F-D114-9452-F30801B5F18E",
-      "firstName": "Colin",
-      "lastName": "Caby",
-      "house": "Gibraltar",
-      "knownAs": "Egestas Fusce Aliquet Corporation"
-    },
-    {
       "id": "408EEED5-1310-9C6C-104B-3AE2CC9D826B",
-      "firstName": "Leilani",
+      "firstName": "Judy",
       "lastName": "Conley",
       "house": "Spain",
       "knownAs": "Ornare Industries"

@@ -30,7 +30,6 @@ export class HeroState {
     return state.heroes;
   }
 
-  //TODO: fix because it is not firing
   @Selector()
   static getSelectedHero(state: HeroStateModel) {
     console.log("getSelectedHero!");
@@ -84,8 +83,21 @@ export class HeroState {
   @Action(UpdateHero)
   updateHero(
     { getState, setState }: StateContext<HeroStateModel>,
-    { payload, id }: UpdateHero
-  ) {}
+    { payload }: UpdateHero
+  ) {
+    return this.heroService.updateHero(payload).pipe(
+      tap(response => {
+        const state = getState();
+        const heroes = [...state.heroes];
+        const index = heroes.findIndex(item => item.id === payload.id);
+        heroes[index] = response;
+        setState({
+          ...state,
+          heroes
+        });
+      })
+    );
+  }
 
   @Action(DeleteHero)
   deleteHero(

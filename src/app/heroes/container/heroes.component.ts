@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Select, Store } from "@ngxs/store";
-import { GetHeroById, GetHeroes } from "../hero.action";
+import { AddHero, DeleteHero, GetHeroes } from "../hero.action";
 import { HeroState } from "../hero.state";
 import { Observable } from "rxjs";
 import { Hero } from "../hero.model";
@@ -26,7 +26,9 @@ export class HeroesComponent implements OnInit {
     this.store.dispatch(new GetHeroes());
   }
 
-  onSubmit() {}
+  onSubmit() {
+    this.store.dispatch(new AddHero(this.newItemForm.value));
+  }
 
   showNewItemForm() {
     this.isShowNewItemForm = !this.isShowNewItemForm;
@@ -40,7 +42,7 @@ export class HeroesComponent implements OnInit {
     const isConfirmed = confirm(`Delete ${hero.firstName}`);
     if (!isConfirmed) return;
 
-    //TODO: DeleteHero
+    this.store.dispatch(new DeleteHero(hero.id));
   }
 
   private formBuilderInit(): void {

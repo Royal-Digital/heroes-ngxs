@@ -17,7 +17,7 @@ export class AddHero {
 export class UpdateHero {
   static readonly type = "[Hero] Update";
 
-  constructor(public payload: Hero, public id: number) {}
+  constructor(public payload: Hero) {}
 }
 
 export class DeleteHero {

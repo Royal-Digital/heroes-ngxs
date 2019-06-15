@@ -10,7 +10,7 @@ import { Hero } from "../../heroes/hero.model";
 })
 export class ItemListComponent {
   @Input() editItemUrl: string;
-  @Input() list$: Observable<Hero>;
+  @Input() list$: Observable<Hero[]>;
 
   @Output() handleRemoveItem: EventEmitter<any> = new EventEmitter<any>();
 
