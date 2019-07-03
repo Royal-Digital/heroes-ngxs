@@ -23,8 +23,8 @@ import { HeaderNavComponent } from "./shared/components/header-nav.component";
     NgxsModule.forRoot([HeroState], {
       developmentMode: !environment.production
     }),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot()
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
