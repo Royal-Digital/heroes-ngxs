@@ -104,7 +104,6 @@ export class VillainState {
     const villains = [...state.villains];
     const index = villains.findIndex(item => item.id === payload.id);
     villains[index] = payload;
-    debugger;
     setState({
       ...state,
       villains
