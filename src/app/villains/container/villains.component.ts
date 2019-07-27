@@ -12,7 +12,7 @@ import { AddVillain, DeleteVillain, GetVillains } from "../villain.action";
   styleUrls: ["./villains.component.css"]
 })
 export class VillainsComponent implements OnInit {
-  editItemUrl: string = "/villains/edit-villain/";
+  editItemUrl: string = "/villains/edit-villain/"; // shared with item-list-component.html
   newItemForm: FormGroup;
   isShowNewItemForm: boolean = false;
 
