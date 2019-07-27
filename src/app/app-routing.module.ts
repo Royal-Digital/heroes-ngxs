@@ -9,11 +9,11 @@ const routes: Routes = [
   },
   {
     path: "heroes",
-    loadChildren: "./heroes/heroes.module#HeroesModule"
+    loadChildren: () => import("./heroes/heroes.module").then(m => m.HeroesModule)
   },
   {
     path: "villains",
-    loadChildren: "./villains/villains.module#VillainsModule"
+    loadChildren: () => import("./villains/villains.module").then(m => m.VillainsModule)
   },
   {
     path: "**",
