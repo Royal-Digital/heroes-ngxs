@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
-import { Hero } from "../../heroes/hero.model";
 
 @Component({
   selector: "app-item-list",
@@ -10,7 +9,7 @@ import { Hero } from "../../heroes/hero.model";
 })
 export class ItemListComponent {
   @Input() editItemUrl: string;
-  @Input() list$: Observable<Hero[]>;
+  @Input() list$: Observable<any[]>;
 
   @Output() handleRemoveItem: EventEmitter<any> = new EventEmitter<any>();
 
