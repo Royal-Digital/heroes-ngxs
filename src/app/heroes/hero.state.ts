@@ -50,7 +50,7 @@ export class HeroState {
       }),
       catchError((err: HttpErrorResponse) => {
         alert("Something happened. Please try again.");
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
@@ -70,7 +70,7 @@ export class HeroState {
       }),
       catchError((err: HttpErrorResponse) => {
         alert("Something happened. Please try again.");
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
@@ -89,7 +89,7 @@ export class HeroState {
       }),
       catchError((err: HttpErrorResponse) => {
         alert("Something happened. Please try again.");
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
@@ -116,7 +116,7 @@ export class HeroState {
           ...state,
           heroes: previousState.heroes
         });
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
@@ -141,7 +141,7 @@ export class HeroState {
           ...state,
           heroes: previousState.heroes
         });
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }

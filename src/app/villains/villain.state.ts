@@ -49,7 +49,7 @@ export class VillainState {
       }),
       catchError((err: HttpErrorResponse) => {
         alert("Something happened. Please try again.");
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
@@ -69,7 +69,7 @@ export class VillainState {
       }),
       catchError((err: HttpErrorResponse) => {
         alert("Something happened. Please try again.");
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
@@ -88,7 +88,7 @@ export class VillainState {
       }),
       catchError((err: HttpErrorResponse) => {
         alert("Something happened. Please try again.");
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
@@ -115,7 +115,7 @@ export class VillainState {
           ...state,
           villains: previousState.villains
         });
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
@@ -140,7 +140,7 @@ export class VillainState {
           ...state,
           villains: previousState.villains
         });
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
