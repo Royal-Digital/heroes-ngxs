@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { Select, Store } from "@ngxs/store";
-import { AddHero, DeleteHero, GetHeroes } from "../hero.action";
-import { HeroState } from "../hero.state";
-import { Observable } from "rxjs";
-import { Hero } from "../hero.model";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { AddHero, DeleteHero, GetHeroes } from '../hero.action';
+import { HeroState } from '../hero.state';
+import { Observable } from 'rxjs';
+import { Hero } from '../hero.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: "app-heroes",
-  templateUrl: "./heroes.component.html",
-  styleUrls: ["./heroes.component.css"]
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  editItemUrl: string = "/heroes/edit-hero/"; // shared with item-list-component.html
+  editItemUrl: string = '/heroes/edit-hero/'; // shared with item-list-component.html
   newItemForm: FormGroup;
   isShowNewItemForm: boolean = false;
 
@@ -49,10 +49,10 @@ export class HeroesComponent implements OnInit {
 
   private formBuilderInit(): void {
     this.newItemForm = this.fb.group({
-      firstName: ["", Validators.required],
-      lastName: [""],
-      house: [""],
-      knownAs: [""]
+      firstName: ['', Validators.required],
+      lastName: [''],
+      house: [''],
+      knownAs: ['']
     });
   }
 }

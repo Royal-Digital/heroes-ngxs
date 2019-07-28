@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-item-list",
-  templateUrl: "./item-list.component.html",
-  styleUrls: ["./item-list.component.css"]
+  selector: 'app-item-list',
+  templateUrl: './item-list.component.html',
+  styleUrls: ['./item-list.component.css']
 })
 export class ItemListComponent {
   @Input() editItemUrl: string;

@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Hero } from "./hero.model";
-import { Observable } from "rxjs";
-import { BaseUrl } from "../shared/api.config";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Hero } from './hero.model';
+import { Observable } from 'rxjs';
+import { BaseUrl } from '../shared/api.config';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class HeroService {
   constructor(private http: HttpClient) {}

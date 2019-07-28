@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Villain } from "./villain.model";
-import { Observable, throwError } from "rxjs";
-import { BaseUrl } from "../shared/api.config";
-import { catchError } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Villain } from './villain.model';
+import { Observable, throwError } from 'rxjs';
+import { BaseUrl } from '../shared/api.config';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class VillainService {
   constructor(private http: HttpClient) {}

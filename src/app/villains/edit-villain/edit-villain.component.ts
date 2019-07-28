@@ -1,23 +1,22 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Select, Store } from "@ngxs/store";
-import { VillainState } from "../villain.state";
-import { Observable, Subscription } from "rxjs";
-import { Villain } from "../villain.model";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { VillainService } from "../villain.service";
-import { ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
-import { GetVillainById, UpdateVillain } from "../villain.action";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { VillainState } from '../villain.state';
+import { Observable, Subscription } from 'rxjs';
+import { Villain } from '../villain.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { VillainService } from '../villain.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { GetVillainById, UpdateVillain } from '../villain.action';
 
 @Component({
-  selector: "app-edit-villain",
-  templateUrl: "./edit-villain.component.html",
-  styleUrls: ["./edit-villain.component.css"]
+  selector: 'app-edit-villain',
+  templateUrl: './edit-villain.component.html',
+  styleUrls: ['./edit-villain.component.css']
 })
 export class EditVillainComponent implements OnInit, OnDestroy {
   @Select(VillainState.getSelectedVillain)
   villain: Observable<Villain>;
-
   villainForm: FormGroup;
   id: string;
   sub: Subscription;
@@ -51,7 +50,7 @@ export class EditVillainComponent implements OnInit, OnDestroy {
   }
 
   private getVillain(): void {
-    this.id = this.activatedRoute.snapshot.paramMap.get("id");
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.sub = this.store
       .dispatch(new GetVillainById(this.id))
       .subscribe(data => {
@@ -71,11 +70,11 @@ export class EditVillainComponent implements OnInit, OnDestroy {
 
   private formBuilderInit(): void {
     this.villainForm = this.fb.group({
-      id: [""],
-      firstName: [""],
-      lastName: [""],
-      house: [""],
-      knownAs: [""]
+      id: [''],
+      firstName: [''],
+      lastName: [''],
+      house: [''],
+      knownAs: ['']
     });
   }
 }

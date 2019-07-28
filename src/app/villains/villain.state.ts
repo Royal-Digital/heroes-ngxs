@@ -1,16 +1,16 @@
-import { Villain } from "./villain.model";
-import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { VillainService } from "./villain.service";
+import { Villain } from './villain.model';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { VillainService } from './villain.service';
 import {
   AddVillain,
   DeleteVillain,
   GetVillainById,
   GetVillains,
   UpdateVillain
-} from "./villain.action";
-import { catchError, tap } from "rxjs/operators";
-import { HttpErrorResponse } from "@angular/common/http";
-import { throwError } from "rxjs";
+} from './villain.action';
+import { catchError, tap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 export class VillainStateModel {
   villains: Villain[];
@@ -18,7 +18,7 @@ export class VillainStateModel {
 }
 
 @State<VillainStateModel>({
-  name: "villains",
+  name: 'villains',
   defaults: {
     villains: [],
     villain: null
@@ -48,7 +48,7 @@ export class VillainState {
         });
       }),
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         return throwError(err.message);
       })
     );
@@ -68,7 +68,7 @@ export class VillainState {
         });
       }),
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         return throwError(err.message);
       })
     );
@@ -87,7 +87,7 @@ export class VillainState {
         });
       }),
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         return throwError(err.message);
       })
     );
@@ -108,9 +108,10 @@ export class VillainState {
       ...state,
       villains
     });
+
     return this.villainService.updateVillain(payload).pipe(
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         setState({
           ...state,
           villains: previousState.villains
@@ -135,7 +136,7 @@ export class VillainState {
     });
     return this.villainService.removeVillain(id).pipe(
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         setState({
           ...state,
           villains: previousState.villains

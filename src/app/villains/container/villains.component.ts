@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Select, Store } from "@ngxs/store";
-import { VillainState } from "../villain.state";
-import { Observable } from "rxjs";
-import { Villain } from "../villain.model";
-import { AddVillain, DeleteVillain, GetVillains } from "../villain.action";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Select, Store } from '@ngxs/store';
+import { VillainState } from '../villain.state';
+import { Observable } from 'rxjs';
+import { Villain } from '../villain.model';
+import { AddVillain, DeleteVillain, GetVillains } from '../villain.action';
 
 @Component({
-  selector: "app-villains",
-  templateUrl: "./villains.component.html",
-  styleUrls: ["./villains.component.css"]
+  selector: 'app-villains',
+  templateUrl: './villains.component.html',
+  styleUrls: ['./villains.component.css']
 })
 export class VillainsComponent implements OnInit {
-  editItemUrl: string = "/villains/edit-villain/"; // shared with item-list-component.html
+  editItemUrl: string = '/villains/edit-villain/'; // shared with item-list-component.html
   newItemForm: FormGroup;
   isShowNewItemForm: boolean = false;
 
@@ -49,10 +49,10 @@ export class VillainsComponent implements OnInit {
 
   private formBuilderInit(): void {
     this.newItemForm = this.fb.group({
-      firstName: ["", Validators.required],
-      lastName: [""],
-      house: [""],
-      knownAs: [""]
+      firstName: ['', Validators.required],
+      lastName: [''],
+      house: [''],
+      knownAs: ['']
     });
   }
 }

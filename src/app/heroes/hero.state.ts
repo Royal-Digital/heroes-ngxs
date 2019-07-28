@@ -1,16 +1,16 @@
-import { Hero } from "./hero.model";
-import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { HeroService } from "./hero.service";
+import { Hero } from './hero.model';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { HeroService } from './hero.service';
 import {
   AddHero,
   DeleteHero,
   GetHeroById,
   GetHeroes,
   UpdateHero
-} from "./hero.action";
-import { catchError, tap } from "rxjs/operators";
-import { HttpErrorResponse } from "@angular/common/http";
-import { throwError } from "rxjs";
+} from './hero.action';
+import { catchError, tap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 export class HeroStateModel {
   heroes: Hero[];
@@ -18,7 +18,7 @@ export class HeroStateModel {
 }
 
 @State<HeroStateModel>({
-  name: "heroes",
+  name: 'heroes',
   defaults: {
     heroes: [],
     hero: null
@@ -34,7 +34,7 @@ export class HeroState {
 
   @Selector()
   static getSelectedHero(state: HeroStateModel) {
-    console.log("getSelectedHero!");
+    console.log('getSelectedHero!');
     return state.hero;
   }
 
@@ -49,7 +49,7 @@ export class HeroState {
         });
       }),
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         return throwError(err.message);
       })
     );
@@ -69,7 +69,7 @@ export class HeroState {
         });
       }),
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         return throwError(err.message);
       })
     );
@@ -88,7 +88,7 @@ export class HeroState {
         });
       }),
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         return throwError(err.message);
       })
     );
@@ -111,7 +111,7 @@ export class HeroState {
     });
     return this.heroService.updateHero(payload).pipe(
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         setState({
           ...state,
           heroes: previousState.heroes
@@ -136,7 +136,7 @@ export class HeroState {
     });
     return this.heroService.removeHero(id).pipe(
       catchError((err: HttpErrorResponse) => {
-        alert("Something happened. Please try again.");
+        alert('Something happened. Please try again.');
         setState({
           ...state,
           heroes: previousState.heroes
